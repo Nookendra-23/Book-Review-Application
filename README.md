@@ -1,5 +1,3 @@
-
-```markdown
 # Bookstore API - IBM CAD220EN Project
 
 This is a simple backend application built using **Node.js** and **Express.js**. It allows users to access basic information about books, add reviews, and perform user authentication. This API serves as a learning project for back-end application development.
@@ -47,7 +45,6 @@ The **Bookstore API** provides a RESTful interface for interacting with a collec
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/bookstore-api.git
-   ```
 
 2. Navigate to the project directory:
    ```bash
