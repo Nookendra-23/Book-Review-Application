@@ -19,7 +19,24 @@ const getAllBooks = async () => {
   }
 };
 
-// Get the book list available in the shop
+// User Registration (POST /register)
+public_users.post("/register", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if (!username || !password) {
+    return res.status(404).json({ message: "Missing username or password" });
+  } else if (doesExist(username)) {
+    return res.status(404).json({ message: "User already exists." });
+  } else {
+    users.push({ username: username, password: password });
+    return res
+      .status(200)
+      .json({ message: "User successfully registered. Please login." });
+  }
+});
+
+// Get the book list available in the shop (Task 10)
 public_users.get("/", async (req, res) => {
   try {
     const allBooks = await getAllBooks();
@@ -29,7 +46,7 @@ public_users.get("/", async (req, res) => {
   }
 });
 
-// Get book details based on ISBN using async/await with Axios
+// Get book details based on ISBN (Task 11)
 public_users.get("/isbn/:isbn", async (req, res) => {
   const targetISBN = req.params.isbn;
   try {
@@ -41,7 +58,7 @@ public_users.get("/isbn/:isbn", async (req, res) => {
   }
 });
 
-// Get book details based on author using async/await with Axios
+// Get book details based on author (Task 12)
 public_users.get("/author/:author", async (req, res) => {
   const author = req.params.author;
   try {
@@ -53,7 +70,7 @@ public_users.get("/author/:author", async (req, res) => {
   }
 });
 
-// Get all books based on title using async/await with Axios
+// Get all books based on title (Task 13)
 public_users.get("/title/:title", async (req, res) => {
   const title = req.params.title;
   try {
@@ -65,7 +82,7 @@ public_users.get("/title/:title", async (req, res) => {
   }
 });
 
-// Get book review based on ISBN using async/await with Axios
+// Get book review based on ISBN
 public_users.get("/review/:isbn", async (req, res) => {
   const targetISBN = req.params.isbn;
   try {
